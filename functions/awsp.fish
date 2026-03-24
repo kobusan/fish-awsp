@@ -61,7 +61,7 @@ function awsp --description "AWS profile switcher for Fish shell with fzf UI"
     end
 
     function __awsp_alias_cache_dir
-        echo ~/.cache/fish-awsp
+        echo "$HOME/.cache/awsp-fish"
     end
 
     function __awsp_alias_cache_key --argument-names profile
@@ -69,7 +69,7 @@ function awsp --description "AWS profile switcher for Fish shell with fzf UI"
         if test "$profile" = "default"
             set key default
         end
-        echo (__awsp_alias_cache_dir)/alias-$key.txt
+        echo "$HOME/.cache/awsp-fish/alias-$key.txt"
     end
 
     function __awsp_alias --argument-names profile
@@ -102,7 +102,7 @@ function awsp --description "AWS profile switcher for Fish shell with fzf UI"
             set alias_value "-"
         end
 
-        printf "%s\n" $alias_value > $cache_file
+        printf "%s\n" "$alias_value" | command tee "$cache_file" >/dev/null
         echo $alias_value
     end
 

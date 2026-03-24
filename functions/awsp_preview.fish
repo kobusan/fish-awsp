@@ -4,11 +4,11 @@ function awsp_preview --description "Preview selected AWS profile" --argument-na
     end
 
     function __awsp_preview_cache_dir
-        echo ~/.cache/fish-awsp
+        echo "$HOME/.cache/awsp-fish"
     end
 
     function __awsp_preview_alias_cache_key --argument-names p
-        echo (__awsp_preview_cache_dir)/alias-$p.txt
+        echo "$HOME/.cache/awsp-fish/alias-$p.txt"
     end
 
     function __awsp_preview_get --argument-names key
@@ -29,17 +29,17 @@ function awsp_preview --description "Preview selected AWS profile" --argument-na
         set -l cache_dir (__awsp_preview_cache_dir)
         set -l cache_key (__awsp_preview_alias_cache_key $profile)
 
-        mkdir -p $cache_dir 2>/dev/null
+        command mkdir -p -- "$cache_dir" 2>/dev/null
 
         # 6時間キャッシュ
-        if test -f $cache_key
+        if test -f "$cache_key"
             set -l now (date +%s)
-            set -l mtime (stat -f %m $cache_key 2>/dev/null)
+            set -l mtime (stat -f %m "$cache_key" 2>/dev/null)
 
             if test -n "$mtime"
-                set -l age (math $now - $mtime)
+                set -l age (math "$now - $mtime")
                 if test $age -lt 21600
-                    cat $cache_key
+                    cat "$cache_key"
                     return 0
                 end
             end
@@ -55,8 +55,8 @@ function awsp_preview --description "Preview selected AWS profile" --argument-na
             set value "-"
         end
 
-        printf "%s\n" $value > $cache_key
-        echo $value
+        printf "%s\n" "$value" | command tee "$cache_key" >/dev/null
+        echo "$value"
     end
 
     echo "PROFILE"
