@@ -1,4 +1,4 @@
-# awsp-fish
+# fish-awsp
 
 AWS profile switcher for **Fish shell** with:
 
@@ -18,7 +18,7 @@ Quickly switch AWS profiles from the terminal.
 Install using **Fisher**
 
 ```bash
-fisher install <your-github-username>/awsp-fish
+fisher install https://github.com/kobusan/fish-awsp
 ```
 
 If you don't have Fisher:
@@ -117,7 +117,7 @@ Profile names and commands are available via tab completion.
 
 ## Repository structure
 
-    awsp-fish
+    fish-awsp
     ├── functions
     │   ├── awsp.fish
     │   └── awsp_preview.fish

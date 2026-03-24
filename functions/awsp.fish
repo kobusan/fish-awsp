@@ -61,7 +61,7 @@ function awsp --description "AWS profile switcher for Fish shell with fzf UI"
     end
 
     function __awsp_alias_cache_dir
-        echo ~/.cache/awsp-fish
+        echo ~/.cache/fish-awsp
     end
 
     function __awsp_alias_cache_key --argument-names profile

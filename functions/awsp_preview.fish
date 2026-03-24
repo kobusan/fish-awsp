@@ -4,7 +4,7 @@ function awsp_preview --description "Preview selected AWS profile" --argument-na
     end
 
     function __awsp_preview_cache_dir
-        echo ~/.cache/awsp-fish
+        echo ~/.cache/fish-awsp
     end
 
     function __awsp_preview_alias_cache_key --argument-names p
