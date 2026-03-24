@@ -18,7 +18,7 @@ Quickly switch AWS profiles from the terminal.
 Install using **Fisher**
 
 ```bash
-fisher install https://github.com/kobusan/fish-awsp
+fisher install kobusan/fish-awsp
 ```
 
 If you don't have Fisher:
