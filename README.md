@@ -2,127 +2,132 @@
 
 AWS profile switcher for **Fish shell** with:
 
-- fzf interactive UI
+- fzf interactive selector
 - preview pane
-- color output
+- colorized output
 - AWS account alias support
+- shell completion
+- Fisher plugin support
 
 Quickly switch AWS profiles from the terminal.
 
 ---
 
-# Install
+## Install
 
 Install using **Fisher**
 
+```bash
+fisher install <your-github-username>/awsp-fish
+```
 
-fisher install <your-username>/awsp-fish
+If you don't have Fisher:
 
-
-Install fisher if needed:
-
-
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish
- | source
+```bash
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
 fisher install jorgebucaran/fisher
-
+```
 
 ---
 
-# Usage
+## Usage
 
 Interactive switch
 
-
+```bash
 awsp
-
+```
 
 List profiles
 
-
+```bash
 awsp list
-
+```
 
 Show current profile
 
-
+```bash
 awsp current
-
+```
 
 Direct switch
 
-
+```bash
 awsp dev
-
+```
 
 Clear profile
 
-
+```bash
 awsp clear
+```
 
+Completion
+
+```bash
+awsp <TAB>
+```
 
 ---
 
-# Requirements
+## Requirements
 
-- fish shell
+- Fish shell
 - AWS CLI
 - fzf
 
-Install:
+Install on macOS:
 
-
+```bash
 brew install awscli fzf
-
+```
 
 ---
 
-# Features
+## Features
 
 ### Interactive selector
 
-
-awsp
-
-
-Fuzzy search AWS profiles.
-
----
+Use `fzf` to fuzzy-search AWS profiles.
 
 ### Preview pane
 
-Shows:
+Shows selected profile details:
 
 - account alias
 - region
-- role
+- role ARN
+- source profile
 - SSO session
-
----
+- SSO start URL
 
 ### Colorized output
 
+`awsp list` highlights the active profile.
 
-awsp list
+### Account alias caching
 
+AWS account alias lookups are cached to avoid repeated API calls.
 
-Highlights the active profile.
+### Shell completion
 
----
-
-# Structure
-
-
-awsp-fish
-├ functions
-│ ├ awsp.fish
-│ └ awsp_preview.fish
-├ README.md
-└ LICENSE
-
+Profile names and commands are available via tab completion.
 
 ---
 
-# License
+## Repository structure
+
+    awsp-fish
+    ├── functions
+    │   ├── awsp.fish
+    │   └── awsp_preview.fish
+    ├── completions
+    │   └── awsp.fish
+    ├── README.md
+    └── LICENSE
+
+---
+
+## License
 
 MIT
